@@ -1,8 +1,10 @@
 import requests
 import json
 
+global_api_key = ""
+
 def check_ticker(ticker):                                       ## Look up if ticker is available in simfin
-    api_key = "?api-key=yjSXF9TUOiYVtZAtbYK7bGNMajVCDk3y"               # used to construct API link
+    api_key = "?api-key=" + global_api_key               # used to construct API link
     base_link = "https://simfin.com/api/v1/info/find-id/ticker/"        # used to construct API link
     API_html = base_link + ticker.upper() + api_key                     # creates API link
     API_output = requests.get(API_html).json()                          # requests data from API link
@@ -14,7 +16,7 @@ def check_ticker(ticker):                                       ## Look up if ti
         return "error"
 
 def statement_test(sim_id):                                     ## Tests if statements are available
-    api_key = "/statements/list?api-key=yjSXF9TUOiYVtZAtbYK7bGNMajVCDk3y"     # used to construct API link
+    api_key = "/statements/list?api-key=" + global_api_key     # used to construct API link
     base_link = "https://simfin.com/api/v1/companies/id/"                     # used to construct API link
     API_html = base_link + sim_id + api_key                                   # creates API link
     API_output = requests.get(API_html).json()                                # requests data from API link
@@ -54,7 +56,7 @@ def data_call(sim_id, years):
     pull_is = "/statements/standardised?stype=pl&ptype=FY&fyear="
     pull_bs = "/statements/standardised?stype=bs&ptype=q4&fyear="
     pull_cf = "/statements/standardised?stype=cf&ptype=FY&fyear="
-    api_key = "&api-key=yjSXF9TUOiYVtZAtbYK7bGNMajVCDk3y"
+    api_key = "&api-key=" + global_api_key
     data = {}
     for x in range(len(years)):
         current_year = []

@@ -1,7 +1,7 @@
 import sqlite3
 import pandas as pd
 
-path = '/media/francesco/hdd/data/'
+path = 'NULL'
 file_end = '.sqlite'
 
 
