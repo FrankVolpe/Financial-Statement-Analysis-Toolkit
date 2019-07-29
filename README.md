@@ -93,8 +93,9 @@ Since the display function is how the DataFrames are developed, you would prefac
 
 ```python
 data.display().to_csv('YOUR PATH HERE')
+```
 
-More information about the to_csv function can be found [here](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html)
+More information about the to\_csv function can be found [here](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html)
 
 ## Improvements to be made
 
