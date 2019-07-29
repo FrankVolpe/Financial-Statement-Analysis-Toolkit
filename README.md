@@ -31,37 +31,45 @@ This was designed for use within an iPython terminal. Jupyter Notebooks are also
 
 Importing the fs\_calculations.py file will be all inclusive, this would be necessary for any calculations you wish to make with the data being generated
 
-'''from fs_calculations import *'''
+'''from fs_calculations import *
+'''
 
 Pull data using the upload function
 
-'''data = upload('AAPL')'''
+'''data = upload('AAPL')
+'''
 
 To view the data, use the display function
 
-'''data.display()'''
+'''data.display()
+'''
 
 Create a fs\_calculations object
 
-'''calculations = fs_calculations(data)'''
+'''calculations = fs_calculations(data)
+'''
 
 To display the calculations, use the display function (same as above)
 
-'''calculations.display()'''
+'''calculations.display()
+'''
 
 ### Only pull data
 
 If you would just like to pull the data, you can import panel\_data.py instead
 
-'''from panel_data import *'''
+'''from panel_data import *
+'''
 
 Pull data with the upload function
 
-'''data = upload('AAPL')'''
+'''data = upload('AAPL')
+'''
 
 To view the data, use the display function
 
-'''data.display()'''
+'''data.display()
+'''
 
 
 ## Improvements to be made
