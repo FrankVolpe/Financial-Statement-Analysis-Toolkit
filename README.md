@@ -87,6 +87,14 @@ To view the data, use the display function
 data.display()
 ```
 
+### Exporting Data
+
+Since the display function is how the DataFrames are developed, you would preface any exports with it. For example, if you were to export to CSV, you would use:
+
+```python
+data.display().to_csv('YOUR PATH HERE')
+
+More information about the to_csv function can be found [here](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html)
 
 ## Improvements to be made
 
