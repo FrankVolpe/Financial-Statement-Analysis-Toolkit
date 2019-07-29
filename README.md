@@ -1,6 +1,6 @@
 # Financial Statement Generation through SimFin API
 
-Before I begin, I find it absolutely necessary to thank @SimFin for access to this data. Hard work like they're doing will make important datasets more accessable to everyone. 
+Before I begin, I find it absolutely necessary to thank [@SimFin](https://github.com/SimFin) for access to this data. Hard work like they're doing will make important datasets more accessable to everyone. 
 
 ## Current Use Cases
 
@@ -39,53 +39,53 @@ This was designed for use within an iPython terminal. Jupyter Notebooks are also
 
 Importing the fs\_calculations.py file will be all inclusive, this would be necessary for any calculations you wish to make with the data being generated
 
-'''python
+```python
 from fs_calculations import *
-'''
+```
 
 Pull data using the upload function
 
-'''python
+```python
 data = upload('AAPL')
-'''
+```
 
 To view the data, use the display function
 
-'''python
+```python
 data.display()
-'''
+```
 
 Create a fs\_calculations object
 
-'''python
+```python
 calculations = fs_calculations(data)
-'''
+```
 
 To display the calculations, use the display function (same as above)
 
-'''python
+```python
 calculations.display()
-'''
+```
 
 ### Only pull data
 
 If you would just like to pull the data, you can import panel\_data.py instead
 
-'''python
+```python
 from panel_data import *
-'''
+```
 
 Pull data with the upload function
 
-'''python
+```python
 data = upload('AAPL')
-'''
+```
 
 To view the data, use the display function
 
-'''python
+```python
 data.display()
-'''
+```
 
 
 ## Improvements to be made
