@@ -1,0 +1,12 @@
+LocalData/Test/
+__pycache__/
+
+# Swap Files
+*~
+*.py~
+*.swp
+
+# Cache files
+*.un~
+
+
