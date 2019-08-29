@@ -9,7 +9,6 @@
 
 ## /SIMFIN/src/CleanData.py
 * Function to change Line item manually
-* Change LineItem['Values'] to only include 'Chosen'
 
 ## /SIMFIN/CalcRatios/
 * NOT DONE IN PANDAS. LIMIT DEPENDENCIES
