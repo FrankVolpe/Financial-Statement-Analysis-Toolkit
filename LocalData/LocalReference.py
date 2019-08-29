@@ -76,21 +76,21 @@ def GeneralDataJSON(AllEntities,
     Link = 'https://simfin.com/api/v1/companies/id/%s'
     Params = {'api-key' : APIKey}
     ## Loop through AllEntities
-    for x in range(len(AllEntities)):
-        SimId = str(AllEntities[x]['simId'])
+    for Entity in AllEntities:
+        SimId = str(Entity['simId'])
         try:
             Detail = requests.get(Link % SimId, params=Params).json()
             # Add new data to AllEntities
-            AllEntities[x]['fyearEnd']   = Detail['fyearEnd']
-            AllEntities[x]['employees']  = Detail['employees']
-            AllEntities[x]['sectorName'] = Detail['sectorName']
-            AllEntities[x]['sectorCode'] = Detail['sectorCode']
+            Entity['fyearEnd']   = Detail['fyearEnd']
+            Entity['employees']  = Detail['employees']
+            Entity['sectorName'] = Detail['sectorName']
+            Entity['sectorCode'] = Detail['sectorCode']
         except Exception as E:
             # Keep track of errors as they occur
             ReportError('GenData',
                         type(E).__name__,
                         SimId,
-                        AllEntities[x]['name'])
+                        Entity['name'])
         WaitTime(Sleep)
     ## Save to file
     with open(path+FName, 'w') as file:
@@ -120,16 +120,16 @@ def AvailableStatementsJSON(AllEntities,
     Link = 'https://simfin.com/api/v1/companies/id/%s/statements/list'
     Params = {'api-key' : APIKey}
     ## Loop through AllEntities
-    for x in range(len(AllEntities)):
-        SimId = str(AllEntities[x]['simId'])
+    for Entity in AllEntities:
+        SimId = str(Entity['simId'])
         try:
             Statements = requests.get(Link % SimId, params=Params).json()
-            AllEntities[x]['Statements'] = Statements
+            Entity['Statements'] = Statements
         except Exception as E:
             ReportError('StatementData',
                         type(E).__name__,
                         SimId,
-                        AllEntities[x]['name'])
+                        Entity['name'])
         WaitTime(Sleep)
     ## Save to file
     with open(path+FName, 'w') as file:
@@ -140,20 +140,23 @@ def AvailableStatementsJSON(AllEntities,
 ######################################################################
 ## Generate list of Sectors and corresponding codes in AllEntities ###
 ######################################################################
+## { SectorCode : { 'Name'        : SectorName,
+##                  'Companies'   : [] }}
+##
 
 def SectorCodesJSON(AllEntities, FName='SectorCodes.json'):
     Output = {}
-    for x in range(len(AllEntities)):
+    for Entity in AllEntities:
         try:
-            SectorCode = AllEntities[x]['sectorCode']
-            SectorName = AllEntities[x]['sectorName']
+            SectorCode = Entity['sectorCode']
+            SectorName = Entity['sectorName']
             Output[SectorCode] = {'Name'        : SectorName,
                                   'Companies'   : []}
         except Exception as E:
             ReportError('SectorCode',
                         type(E).__name__,
-                        AllEntities[x]['simId'],
-                        AllEntities[x]['name'])
+                        Entity['simId'],
+                        Entity['name'])
 
     ## Save to file
     with open(path+FName, 'w') as file:
@@ -164,15 +167,19 @@ def SectorCodesJSON(AllEntities, FName='SectorCodes.json'):
 ##########################################################
 ## Add company names & SimIDs to corresponding sectors ###
 ##########################################################
+## { SectorCode : { 'Name'        : SectorName,
+##                  'Companies'   : [ { SimId : Name},
+##                                    { SimId : Name} ]}}
+##
 
 def SectorConstituentsJSON(AllEntities,
                            SectorCodes,
                            FName='SectorConstituents.json'):
-    for x in range(len(AllEntities)):
+    for Entity in AllEntities:
         try:
-            SimId  = AllEntities[x]['simId']
-            Name   = AllEntities[x]['name']
-            Sector = AllEntities[x]['sectorCode']
+            SimId  = Entity['simId']
+            Name   = Entity['name']
+            Sector = Entity['sectorCode']
             SectorCodes[Sector]['Companies'].append({SimId : Name})
         except Exception as E:
             ReportError('SectorConstituent',

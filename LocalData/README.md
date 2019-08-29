@@ -8,6 +8,12 @@ This folder consists of two scripts, one of which is built solely for command li
 
 SimFin offers a lot of supplemental data for the companies listed. Beyond this, API calls for financial statements typically depend on information from a few other API calls. For free users with limited API usage each day, or for other datapoints you may want to use to sort through the data available to you (ie. sector information), it may make sense to store some of the 'reference datasets' locally. 
 
+Samples of what these datasets look like can be seen in the reference subdirectory
+
+## Pulling Reference Datasets via the Command Line
+
+Not yet functional
+
 ## Pulling Reference Datasets via iPython
 
 First, import the necessary functions via LocalReference
