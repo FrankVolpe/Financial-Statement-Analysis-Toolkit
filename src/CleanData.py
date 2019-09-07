@@ -36,6 +36,8 @@ def IndexStatement(OutputList, Statement):
         Value    = LineItem['valueChosen']
         SuppVal  = { 'Calculated' :  LineItem['valueCalculated'],
                      'Assigned'   :  LineItem['valueAssigned'] }
+        if Value == None:
+            Value = 0
         try:
             # Add to Output if line items are the same
             if OutputList[x]['TID'] == LineItem['tid']:
@@ -46,13 +48,17 @@ def IndexStatement(OutputList, Statement):
                 print('Error appending %s from %s statement' % Error)
         # If LineItem hasnt been added to Output yet, do so. 
         except IndexError:
+            Calc = False
+            if SuppVal['Calculated'] == Value:
+                if SuppVal['Assigned'] != None:
+                    Calc = True
             OutputList.append({'Name'      : Name,
-                               'Calc   '   : LineItem['checkPossible'],
+                               'Calc'      : Calc,
                                'Parent'    : LineItem['parent_tid'],
                                'TID'       : LineItem['tid'],
                                'Children'  : [],
                                'Values'    : { Date : Value },
-                               'SuppVal'   : SuppVal })
+                               'SuppVal'   : { Date : SuppVal }})
 
 # The only two items in a line item not being added, saved 
 # here so they can be later on if necessary

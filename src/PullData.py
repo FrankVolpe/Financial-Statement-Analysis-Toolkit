@@ -10,9 +10,9 @@ with open('APIKey.txt', 'r') as file:
     APIKey = file.read().replace('\n', '')
     file.close()
 
-######################################
-## Set path for saving data locally ##
-######################################
+##############################
+## Set path for saving data ##
+##############################
 ##
 path = 'LocalData/data/'
 
